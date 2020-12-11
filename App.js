@@ -1,23 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import reducers from './reducers'
+import RestaurantsContainer from './components/RestaurantsContainer';
+
 
 export default function App() {
   //must pass in reducers
-  const store = createStore({reducers})
+  const store = createStore(reducers)
 
   return (
-    //pass store as props to provider
     <Provider store={store}>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+        <View style={styles.container}>
+            <RestaurantsContainer />
+        </View>
     </Provider>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
