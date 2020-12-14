@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import  { useDispatch, useSelector } from 'react-redux';
+import RestaurantCard from './RestaurantCard';
 
 const apiKey = 'FTVhbh0sxoCCGqrcpDWNPLBOkjPcPdhST-lqZyKsmbfJbioqYuBcFIi3AvPH4LjMdfwe5CQAvfj-0L-MPymiYF_bbG284gxiI0YXxD0I3F_Fw5IlXfJnPiOPsUPRX3Yx'
 
@@ -13,7 +14,7 @@ export default function RestaurantsContainer() {
     //fetching in a functional component
     
     useEffect(() => {
-        fetch('https://cors-anywhere.herokuapp.com/' + apiUrl, {
+        fetch(apiUrl, {
             headers: {
             'Authorization': `Bearer ${apiKey}`
             }
@@ -22,19 +23,23 @@ export default function RestaurantsContainer() {
         .then(({businesses}) => dispatch({type: 'SET_RESTAURANTS', restaurants: businesses}))
     }, [])
     
-    const showRestaurants = () => restaurants.map(restaurant => {
-        return <Text>{restaurant.name}</Text>
+    const showRestaurants = () => restaurants.map((restaurant, i) => {
+        return <RestaurantCard 
+            key={restaurant.id} 
+            index={i + 1} 
+            restaurant={restaurant} />
     })
 
     return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 {showRestaurants()}
-            </View>
+            </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        margin: 15,
     }
 })
