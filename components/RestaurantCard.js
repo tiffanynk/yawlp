@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 export default function RestaurantCard({restaurant, index}) {
-    console.log(restaurant)
     return (
         <View style={styles.container}>
             <Image style={styles.cardImage} source={{uri: restaurant.image_url}}></Image>
@@ -21,8 +20,8 @@ export default function RestaurantCard({restaurant, index}) {
                 <Text style={styles.rating}>Rating: {restaurant.rating}</Text>
                 <Text style={styles.address}>{restaurant.location.address1}</Text>
                 <View style={[styles.rowView, {justifyContent: "flex-start"}]}>
-                {restaurant.categories.map(category => (
-                    <Text>{category.title}, </Text>
+                {restaurant.categories.map((category, index) => (
+                    <Text key={index}>{category.title}, </Text>
                 ))}
                 </View>
                 <TouchableOpacity 
