@@ -53,11 +53,14 @@ export default function RestaurantsContainer() {
             <TextInput 
                 style={styles.search} 
                 onChangeText={handleSearchText} 
-                value={searchTerm}/>
+                value={searchTerm}
+                placeholder='Enter Location'
+            />
             <Button
                 style={styles.button} 
                 onPress={handleSearch} 
-                title='search'/>
+                title='search'
+            />
         </View>
         <ScrollView style={styles.container}>
             {showRestaurants()}
@@ -72,13 +75,16 @@ const styles = StyleSheet.create({
         margin: 15,
     },
     searchContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        margin: 10
     },
     search: {
-        height: 30,
+        height: 40,
         flex: 2, 
         borderColor: 'gray', 
-        borderWidth: 1
+        borderWidth: 1,
+        marginRight: 15,
+        paddingHorizontal: 15
     },
     button: { 
         flex: 1 
