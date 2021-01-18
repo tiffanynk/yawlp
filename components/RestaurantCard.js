@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 export default function RestaurantCard({restaurant, index}) {
-    console.log(restaurant)
     return (
         <View style={styles.container}>
             <Image style={styles.cardImage} source={{uri: restaurant.image_url}}></Image>

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Platform } from 'react-native';
 import reducers from './reducers'
 import RestaurantsContainer from './components/RestaurantsContainer';
 
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
   },
